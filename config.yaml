@@ -1,0 +1,44 @@
+# preprocessing params
+n_fft: 1024
+hop_length: 256
+win_length: 1024
+sampling_rate: 22050
+n_mel_channels: 80
+feat_type: mel.melgan
+extension: .flac
+
+
+# model params
+dim_emb: 256
+dim_neck: 32
+dim_pre: 512
+freq: 8
+dim_hidden: 512
+
+# training params
+normalize_embeddings: True
+batch_size: 16 # mini-batch size
+num_iters: 2000000 # number of total iterations for training D
+num_iters_decay: 100000 # number of iterations for decaying lr
+g_lr: 0.0001 # learning rate for G
+
+g_critic: 5 # on which iterations to update G
+beta1: 0.9 # beta1 for Adam optimizer
+beta2: 0.999 # beta2 for Adam optimizer
+
+# Miscellaneous.
+num_workers: 32
+
+
+# Step size.
+log_step: 10
+model_save_step: 10000
+test_step: 5000
+
+# Training configuration.
+lambda_id: 1 # weight for _id mapping loss
+
+code_loss: L1Loss
+id_loss: MSELoss
+class_loss: CrossEntropyLoss
+
